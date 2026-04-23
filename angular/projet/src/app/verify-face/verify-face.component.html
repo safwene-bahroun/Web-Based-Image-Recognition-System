@@ -1,0 +1,41 @@
+<div class="face-verify-container">
+  <h2>Face Verification</h2>
+
+  <div class="webcam-section">
+    <webcam
+      *ngIf="showWebcam"
+      [trigger]="triggerObservable"
+      [videoOptions]="videoOptions"
+      (imageCapture)="handleImage($event)"
+      (initError)="handleInitError($event)"
+    ></webcam>
+
+    <div class="controls">
+      <button 
+        (click)="triggerSnapshot()" 
+        [disabled]="isLoading"
+        class="verify-button"
+      >
+        {{ isLoading ? 'Verifying...' : 'Verify Face' }}
+      </button>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <div class="results">
+    <h3>Verification Results</h3>
+    <ng-container *ngIf="faceResult$ | async as result">
+      <div *ngIf="result.results" class="result-container">
+        <div *ngFor="let item of result.results" class="result-item">
+          <div *ngIf="item.verified" class="verified">
+            ✅ Verified as: <strong>{{ item.name }}</strong>
+          </div>
+          <div *ngIf="!item.verified" class="not-verified">
+            ❌ {{ item.message || 'Not recognized' }}
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

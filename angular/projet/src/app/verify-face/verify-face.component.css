@@ -1,0 +1,160 @@
+/* verify-face.component.css */
+.face-verify-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #061421;
+  color: #afa973;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  color: #068ab0;
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 28px;
+}
+
+.webcam-section {
+  background-color: #0f4066;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.verify-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #068ab0;
+  color: #061421;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.verify-button:hover:not(:disabled) {
+  background-color: #06a0d0;
+  transform: translateY(-2px);
+}
+
+.verify-button:disabled {
+  background-color: #493131;
+  color: #afa973;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.auto-capture {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #afa973;
+}
+
+.auto-capture input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #068ab0;
+  cursor: pointer;
+}
+
+.error-message {
+  color: #ba5c45;
+  background-color: rgba(186, 92, 69, 0.1);
+  padding: 12px;
+  border-radius: 4px;
+  margin: 16px 0;
+  font-size: 14px;
+  border-left: 4px solid #ba5c45;
+}
+
+.results {
+  background-color: #0f4066;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.results h3 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  color: #068ab0;
+}
+
+.result-item {
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.verified {
+  background-color: rgba(6, 138, 176, 0.2);
+  color: #afa973;
+  border-left: 4px solid #068ab0;
+}
+
+.not-verified {
+  background-color: rgba(186, 92, 69, 0.2);
+  color: #afa973;
+  border-left: 4px solid #ba5c45;
+}
+
+.verified strong {
+  color: #068ab0;
+}
+
+/* Loading spinner styles */
+.is-loading {
+  position: relative;
+}
+
+.is-loading::after {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 3px solid rgba(175, 169, 115, 0.3);
+  border-top: 3px solid #068ab0;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .face-verify-container {
+    padding: 15px;
+  }
+  
+  .controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .verify-button {
+    width: 100%;
+  }
+  
+  webcam {
+    max-width: 100%;
+  }
+}

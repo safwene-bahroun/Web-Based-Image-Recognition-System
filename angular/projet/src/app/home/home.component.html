@@ -1,0 +1,67 @@
+<div class="upload-container"
+     (dragover)="onDragOver($event)"
+     (dragleave)="onDragLeave($event)"
+     (drop)="onDrop($event)"
+     [class.dragging]="isDragging">
+
+  <h2>Register your face</h2>
+
+  <form (ngSubmit)="onSubmit()" #faceForm="ngForm">
+    <!-- Name -->
+    <input type="text"
+           name="name"
+           class="input-field"
+           placeholder="Enter your name"
+           [(ngModel)]="userName"
+           required />
+
+    <!-- Image -->
+    <div class="drop-area">
+      <input #fileInput
+             type="file"
+             id="fileInput"
+             accept="image/*"
+             hidden
+             (change)="onFileChange($event)" />
+      <label for="fileInput">
+        <div class="upload-icon">&#8682;</div>
+
+        <ng-container *ngIf="!selectedFile; else fileInfo">
+          <p>Click or drag & drop to upload your face image</p>
+        </ng-container>
+
+        <ng-template #fileInfo>
+          <p>{{ selectedFile!.name }} – {{ (selectedFile!.size / 1024) | number:'1.0-2' }} KB</p>
+        </ng-template>
+      </label>
+    </div>
+
+    <!-- Buttons -->
+    <div class="buttons">
+      <button class="btn predict"
+              type="submit"
+              [disabled]="!faceForm.valid || !selectedFile">
+        Register
+      </button>
+      <button class="btn cancel"
+              type="button"
+              (click)="onCancel()">
+        Cancel
+      </button>
+    </div>
+  </form>
+
+ <!-- Add this CSS class to your styles -->
+<!-- Ajoutez ceci dans votre template -->
+<div class="message-container">
+  <div class="message-box" 
+       [class.success]="responseType === 'success'"
+       [class.error]="responseType === 'error'"
+       *ngIf="responseMessage">
+    <div class="message-content">
+      <span class="message-icon">{{ responseType === 'success' ? '✓' : '⚠️' }}</span>
+      <span class="message-text">{{ responseMessage }}</span>
+    </div>
+  </div>
+</div>
+</div>

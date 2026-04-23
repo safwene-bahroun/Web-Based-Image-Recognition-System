@@ -1,0 +1,33 @@
+<div class="image-processor-container">
+  <h2>{{ mode === 'prediction' ? 'Predicted Items' : 'Barcode/QR Scan Results' }}</h2>
+
+  <div class="image-wrapper">
+    <img *ngIf="processedImageUrl" [src]="processedImageUrl" alt="Processed Image" [class.zoomed]="isZoomed" (click)="toggleZoom()">
+  </div>
+
+  <div *ngIf="mode === 'barcode'" class="results-container">
+    <h3>Decoded Data:</h3>
+
+    <div *ngIf="decodedResults.length; else noResults">
+      <div class="results-list">
+        <div *ngFor="let result of decodedResults" class="result-item">
+          <p class="result-type"><strong>Type:</strong> {{ result.type }}</p>
+          <p class="result-data"><strong>Data:</strong> {{ result.data }}</p>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #noResults>
+      <div class="no-results">
+        <p>No barcode or QR code was detected.</p>
+      </div>
+    </ng-template>
+  </div>
+
+  <div *ngIf="mode === 'prediction' && detectedLabels.length" class="labels-container">
+    <h3>Detected Labels:</h3>
+    <ul>
+      <li *ngFor="let label of detectedLabels">{{ label }}</li>
+    </ul>
+  </div>
+</div>

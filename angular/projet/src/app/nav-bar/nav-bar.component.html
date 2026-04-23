@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg">
+  <a class="navbar-brand" [routerLink]="['/']">Image Recognition</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/home_page']" routerLinkActive="active">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/upload_image']" routerLinkActive="active">Upload Image</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/verify_face']" routerLinkActive="active">Face Verfication</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" 
+           *ngIf="destinationLink"
+           [routerLink]="destinationLink"
+           [class.disabled]="!filename"
+           [attr.aria-disabled]="!filename ? 'true' : null"
+           routerLinkActive="active">
+          {{ displayText }}
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+

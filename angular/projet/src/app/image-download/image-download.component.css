@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400&display=swap");
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+.container {
+  max-width: 500px;
+  max-height: 430px;
+  padding: 2rem;
+  margin-top: auto;
+  border-radius: 8px;
+  box-shadow: 0px 0px 30px rgba(22, 164, 184, 0.37);
+  backdrop-filter: blur(3px);
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: white;
+}
+
+.upload-zone {
+  border: 2px dashed #ccc;
+  padding: 20px;
+  cursor: pointer;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  transition: 0.3s;
+  margin-top: 1rem;
+}
+
+.upload-zone:hover,
+.upload-zone.is-dragging {
+  border-color: #007bff;
+  background: rgba(0, 123, 255, 0.1);
+}
+
+.icon {
+  font-size: 40px;
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+.file-name,
+.file-size {
+  font-size: 14px;
+  color: #fff;
+  margin-top: 5px;
+}
+
+.hidden-input {
+  display: none;
+}
+
+.action-btns {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+button {
+  padding: 0.5rem;
+  margin: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: white;
+  border-radius: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  transition: background-color 0.2s;
+  min-width: 120px;
+}
+
+button:disabled {
+  background-color: #777;
+  cursor: not-allowed;
+  font-size: 15px;
+}
+
+#read_qr_barcode {
+  background-color: #007bff;
+  color: white;
+}
+
+#read_qr_barcode:hover:not(:disabled) {
+  background-color: #218838;
+}
+
+#reset-btn {
+  background-color: #ddd;
+  color: #333;
+  border: none;
+}
+
+#reset-btn:hover:not(:disabled) {
+  background-color: rgb(195, 195, 195);
+}
+
+.predict-btn {
+  background-color: rgb(215, 106, 28);
+  color: white;
+}
+
+.predict-btn:hover:not(:disabled) {
+  background-color: #218838;
+}

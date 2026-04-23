@@ -1,0 +1,66 @@
+<div class="container">
+  <form (ngSubmit)="onSubmit()" #form="ngForm">
+    <div class="form-group">
+      <label for="file">
+        <h2>Upload your image:</h2>
+        <p>Click or drag & drop below to upload the file</p>
+      </label>
+
+      <div
+        class="upload-zone"
+        [class.is-dragging]="isDragging"
+        (dragover)="onDragOver($event)"
+        (dragleave)="onDragLeave($event)"
+        (drop)="onDrop($event)"
+        (click)="triggerFileInput()"
+      >
+        <div class="icon bi bi-cloud-upload"></div>
+        <p class="file-name">
+          {{ selectedFile ? selectedFile.name : 'No File Uploaded' }}
+        </p>
+        <p class="file-size">
+          {{ selectedFile ? (selectedFile.size / 1024).toFixed(2) + ' KB' : '0.00 KB' }}
+        </p>
+      </div>
+
+      <input
+        type="file"
+        id="file"
+        class="form-control hidden-input"
+        (change)="onFileSelected($event)"
+        accept="image/*"
+        #fileInput
+      />
+    </div>
+
+    <div class="action-btns">
+      <button
+        class="button predict-btn"
+        type="submit"
+        mat-raised-button
+        [disabled]="!selectedFile || isScanning"
+      >
+        {{ isPredicting ? 'Processing...' : 'Predict Items' }}
+      </button>
+
+      <button
+        id="read_qr_barcode"
+        type="button"
+        mat-raised-button
+        [disabled]="!selectedFile || isPredicting"
+        (click)="onScanBarcode()"
+      >
+        {{ isScanning ? 'Scanning...' : ' QR/Barcode' }}
+      </button>
+
+      <button
+        id="reset-btn"
+        type="reset"
+        [disabled]="isPredicting || isScanning"
+        (click)="onReset()"
+      >
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>
